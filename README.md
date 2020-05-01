@@ -1,4 +1,4 @@
-# PNC
+# PrimesToolkit
 
 When supplied with a number X, the program can provide the following -
 1. Whether X is a prime number
@@ -7,4 +7,4 @@ When supplied with a number X, the program can provide the following -
 4. Factors of X
 5. Prime factors of X.
 
-[View](https://khushrajrathod.github.io/PrimeNumberCalculator)
+[View](https://khushrajrathod.github.io/PrimesToolkit)
