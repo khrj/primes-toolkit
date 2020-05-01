@@ -1,0 +1,147 @@
+<!--
+Copyright 2020 Khushraj Rathod
+
+This file is part of PrimeNumberCalculator.
+
+PrimeNumberCalculator is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+PrimeNumberCalculator is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with PrimeNumberCalculator.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prime Number Calculator</title>
+</head>
+<body>
+<div>
+    Check if <!--suppress HtmlFormInputWithoutLabel -->
+    <input placeholder="Enter a number here" id="isAPrime"> is a prime
+    <button onclick="isAPrime()">CHECK</button>
+</div>
+<br>
+<div>
+    List primes upto <!--suppress HtmlFormInputWithoutLabel -->
+    <input placeholder="Enter a number here" id="listPrimesUpto">
+    <button onclick="listPrimesUpto()">LIST</button>
+</div>
+<br>
+<div>
+    List <!--suppress HtmlFormInputWithoutLabel -->
+    <input placeholder="Enter a number here" id="listPrimes"> prime numbers
+    <button onclick="listPrimes()">LIST</button>
+</div>
+<br>
+<div>
+    List all factors of <!--suppress HtmlFormInputWithoutLabel -->
+    <input placeholder="Enter a number here" id="allFactors">
+    <button onclick="allFactors()">LIST</button>
+</div>
+<br>
+<div>
+    List prime factors of <!--suppress HtmlFormInputWithoutLabel -->
+    <input placeholder="Enter a number here" id="primeFactors">
+    <button onclick="primeFactors()">LIST</button>
+</div>
+<br>
+<div id="result"></div>
+<script>
+    let result = document.getElementById(`result`);
+    const isAPrime = () => {
+        let number = parseInt(document.getElementById(`isAPrime`).value)
+        let prime = check(number)
+        if (prime === true) {
+            result.innerHTML = `${number} is a Prime Number`
+        } else if (prime === undefined) {
+            result.innerText = `${number} is neither Prime nor Composite`
+        } else {
+            result.innerHTML = `${number} is a Composite Number`
+        }
+    }
+
+    const listPrimesUpto = () => {
+        let number = parseInt(document.getElementById(`listPrimesUpto`).value)
+        let primes = []
+        for (let i = 0; i < number; i++) {
+            if (check(i)) {
+                primes.push(i)
+            }
+        }
+
+        if (primes.length !== 1) {
+            result.innerHTML = `${primes.length} prime numbers found <br><br>${primes.join(`, `)}`
+        } else {
+            result.innerHTML = `1 prime number found - ${primes[0]}`
+        }
+    }
+
+    const listPrimes = () => {
+        let amount = parseInt(document.getElementById(`listPrimes`).value)
+        let primes = []
+        result.innerHTML = `Listing ${amount} primes <br><br>`
+        for (let i = 0; primes.length < amount; i++) {
+            if (check(i)) {
+                primes.push(i)
+            }
+        }
+        result.innerHTML += primes.join(`, `)
+    }
+
+    const allFactors = () => {
+        let number = parseInt(document.getElementById(`allFactors`).value)
+        let factors = []
+        for (let i = 0; i < number; i++) {
+            if (number % i === 0) {
+                factors.push(i)
+            }
+        }
+
+        if (factors.length !== 1) {
+            result.innerHTML = `${factors.length} factors found <br><br>${factors.join(`, `)}`
+        } else {
+            result.innerHTML = `1 factor found - ${factors[0]}`
+        }
+    }
+
+    const primeFactors = () => {
+        let number = parseInt(document.getElementById(`primeFactors`).value)
+        let primeFactors = []
+        for (let i = 0; i < number; i++) {
+            if (number % i === 0 && check(i)) {
+                primeFactors.push(i)
+            }
+        }
+
+        if (primeFactors.length !== 1) {
+            result.innerHTML = `${primeFactors.length} factors found <br><br>${primeFactors.join(`, `)}`
+        } else {
+            result.innerHTML = `1 Prime Factors found - ${primeFactors[0]}`
+        }
+    }
+
+    const check = (number) => {
+        if (number === 1 || number === 0) {
+            return undefined
+        }
+
+        for (let i = 2, s = Math.sqrt(number); i <= s; i++) {
+            if (number % i === 0) {
+                return false
+            }
+        }
+        return true
+    }
+</script>
+
+</body>
+</html>
