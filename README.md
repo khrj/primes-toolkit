@@ -6,5 +6,3 @@ When supplied with a number X, the program can provide the following -
 3. A list of the first X prime numbers
 4. Factors of X
 5. Prime factors of X.
-
-[View](https://khushrajrathod.github.io/PrimesToolkit)
