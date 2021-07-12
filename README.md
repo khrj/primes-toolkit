@@ -1,4 +1,4 @@
-# PrimesToolkit
+# primes-toolkit
 
 When supplied with a number X, the program can provide the following -
 1. Whether X is a prime number
